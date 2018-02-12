@@ -1,0 +1,80 @@
+{%load static%}
+{%load staticfiles%}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:100,300'>
+
+      <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+  
+</head>
+
+<body>
+<div id="celebal" >  
+<img src="{%static 'images/unnamed.png'%}"/></div>
+  <div class="upload">
+    {% if tt %}
+<h5>{{tt}}</h5>
+{% endif %}
+ <div class="upload-files">
+  <header>
+   <p>
+    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+    <span class="up">up</span>
+    <span class="load">load</span>
+   </p>
+  </header>
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+     <div class="body" id="drop">
+   <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
+   <p class="pointer-none"><b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile">browse</a> to begin the upload</p>
+
+				<input type="file" name="myfiles" multiple="multiple" />
+  </div>
+  <footer>
+   <div class="divider">
+    <span><AR>FILES</AR></span>
+   </div>
+   <div class="list-files">
+    <!--   template   -->
+   </div>
+			<input class="importar" name="upload" type="submit">
+  </form>
+     </footer>
+</div>
+</div>
+{% if l%}
+<div class="container" id="set">
+  <div class="row">
+      {%for i in l%}
+  <div class="col-md-4">
+  <img src="{{i.1}}" class="fetch" />
+  {% with i.0 as dic %}
+            {% for key,value in dic.items %}
+      <h4 class="h4" >{{key}} : {{value}}</h4>
+            {% endfor %}
+   {% endwith%}
+  </div>
+
+   {%endfor%}
+
+  </div>
+  </div>
+{%endif%}
+    <script  src="{%static 'js/index.js'%}"></script>
+
+
+
+
+</body>
+
+</html>
