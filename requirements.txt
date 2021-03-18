@@ -122,7 +122,7 @@ pep8==1.7.0
 persistent==4.2.4.2
 pexpect==4.2.1
 pickleshare==0.7.4
-Pillow==4.2.1
+Pillow==8.1.1
 pkginfo==1.4.1
 ply==3.10
 promise==2.1
